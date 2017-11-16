@@ -11,6 +11,10 @@ namespace Sitecore.Support.ContentSearch.SolrProvider.Converters
 {
     public class SolrIndexFieldStorageValueFormatter : Sitecore.ContentSearch.SolrProvider.Converters.SolrIndexFieldStorageValueFormatter
     {
+        public SolrIndexFieldStorageValueFormatter() : base()
+        {
+
+        }
         public override object FormatValueForIndexStorage(object value, string fieldName)
         {
             if (value == null)
@@ -49,9 +53,9 @@ namespace Sitecore.Support.ContentSearch.SolrProvider.Converters
             converter = this.Converters.GetTypeConverter(type);
 
             if (converter == null)
-                return value;
+                return System.Convert.ToString(value, CultureInfo.InvariantCulture);
 
-            return converter.ConvertToString(converterContext, value);
+            return converter.ConvertToString(converterContext, CultureInfo.InvariantCulture, value);
         }
     }
 }

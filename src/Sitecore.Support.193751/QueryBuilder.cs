@@ -3,6 +3,7 @@ using Sitecore.ContentSearch.Utilities;
 using Sitecore.Diagnostics;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Web;
 
@@ -59,7 +60,7 @@ namespace Sitecore.Support.ContentSearch.Utilities
             }
             try
             {
-                return System.Convert.ChangeType(value, conversionType);
+                return System.Convert.ChangeType(value, conversionType, CultureInfo.InvariantCulture);
 
             }
             catch (Exception exception)
